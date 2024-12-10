@@ -11,9 +11,9 @@ class HalamanSatu extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
-      backgroundColor: const Color.fromARGB(255, 199, 217, 240),
+      backgroundColor: const Color.fromARGB(255, 235, 233, 213),
       appBar: AppBar(
-        backgroundColor: const Color.fromARGB(255, 50, 52, 226),
+        backgroundColor: const Color.fromARGB(255, 184, 13, 27),
         leading: Icon(
           Icons.home,
           color: const Color.fromARGB(255, 240, 241, 245),
@@ -31,6 +31,40 @@ class HalamanSatu extends StatelessWidget {
           )
         ],
       ),
+      body: Container(
+          child: Column(
+        children: [
+          Icon(
+            Icons.local_pizza,
+            size: 70.0,
+            color: Colors.red,
+          ),
+          Row(
+            children: [
+              Icon(
+                Icons.donut_large,
+                size: 70.0,
+                color: Colors.red,
+              ),
+              Icon(
+                Icons.donut_large,
+                size: 70.0,
+                color: Colors.red,
+              ),
+              Icon(
+                Icons.donut_large,
+                size: 70.0,
+                color: Colors.red,
+              ),
+            ],
+          ),
+          Icon(
+            Icons.cake,
+            size: 70.0,
+            color: Colors.red,
+          )
+        ],
+      )),
     );
   }
 }
