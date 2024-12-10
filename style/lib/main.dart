@@ -2,9 +2,38 @@ import 'package:flutter/material.dart';
 
 void main() {
   runApp(new MaterialApp(
-    title: "idrcorner application",
-    home: new HalamanSatu(),
-  ));
+      title: "Navigasi",
+      home: new HalamanSatu(),
+      routes: <String, WidgetBuilder>{
+        '/HalamanSatu': (BuildContext context) => new HalamanSatu(),
+        '/HalamanDua': (BuildContext context) => new HalamanDua(),
+      }));
+}
+
+class HalamanDua extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text(
+          "SPEAKER",
+          style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+        ),
+        backgroundColor: Colors.brown,
+      ),
+      body: Center(
+        child: IconButton(
+          onPressed: () {
+            Navigator.pushNamed(context, '/HalamanSatu');
+          },
+          icon: Icon(
+            Icons.speaker,
+            size: 50,
+          ),
+        ),
+      ),
+    );
+  }
 }
 
 class HalamanSatu extends StatelessWidget {
@@ -12,57 +41,23 @@ class HalamanSatu extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.blue,
         title: Text(
-          "Card & Parsing",
+          "MUSIC",
           style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
         ),
+        backgroundColor: Colors.blue,
       ),
-      body: Container(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: [
-            CardSaya(icon: Icons.home, warnaIcon: Colors.brown, teks: "Home"),
-            CardSaya(
-                icon: Icons.favorite, warnaIcon: Colors.pink, teks: "Favorite"),
-            CardSaya(icon: Icons.place, warnaIcon: Colors.blue, teks: "Place"),
-            CardSaya(
-                icon: Icons.settings, warnaIcon: Colors.black, teks: "Setting"),
-          ],
+      body: Center(
+        child: IconButton(
+          onPressed: () {
+            Navigator.pushNamed(context, '/HalamanDua');
+          },
+          icon: Icon(
+            Icons.headphones,
+            size: 50,
+          ),
         ),
       ),
     );
-  }
-}
-
-class CardSaya extends StatelessWidget {
-  const CardSaya({
-    super.key,
-    required this.icon,
-    required this.teks,
-    required this.warnaIcon,
-  });
-
-  final IconData icon;
-  final String teks;
-  final Color warnaIcon;
-
-  @override
-  Widget build(BuildContext context) {
-    return Card(
-        child: Column(
-      children: [
-        Padding(padding: EdgeInsets.all(10)),
-        Icon(
-          icon,
-          size: 50.0,
-          color: warnaIcon,
-        ),
-        Text(
-          teks,
-          style: TextStyle(fontSize: 10.0, color: Colors.brown),
-        )
-      ],
-    ));
   }
 }
