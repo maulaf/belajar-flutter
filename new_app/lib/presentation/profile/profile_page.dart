@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:new_app/presentation/profile/widgets/card_profile_information_widget.dart';
 
 class ProfilePage extends StatefulWidget {
   const ProfilePage({super.key});
@@ -13,171 +14,107 @@ class _ProfilePageState extends State<ProfilePage> {
     return Scaffold(
       backgroundColor: const Color.fromARGB(255, 221, 220, 220),
       body: SafeArea(
-          child: Container(
-        child: Center(
-          child: Container(
-            width: double.infinity,
-            margin: EdgeInsets.all(10),
-            padding: EdgeInsets.all(15),
-            height: 250,
-            decoration: BoxDecoration(
-              boxShadow: [
-                BoxShadow(
-                    color: Colors.grey,
-                    spreadRadius: 2,
-                    blurRadius: 10,
-                    offset: Offset.fromDirection(90))
-              ],
-              color: Colors.white,
-              borderRadius: BorderRadius.circular(10),
-            ),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.stretch,
-              children: [
-                Container(
-                  height: 160,
-                  color: Colors.white10,
-                  child: Row(
-                    children: [
-                      Container(
-                        width: 150,
-                        margin: EdgeInsets.only(bottom: 10),
-                        decoration: BoxDecoration(
-                            image: const DecorationImage(
-                                fit: BoxFit.cover,
-                                image: AssetImage('assets/images/hirono.jpg'))),
-                      ),
-                      Flexible(
-                          child: Container(
-                        margin: EdgeInsets.only(left: 15, top: 10),
+        child: Container(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              TitleAndSubtitle(),
+              SizedBox(
+                height: 20,
+              ),
+              Container(
+                height: 300,
+                child: ListView.builder(
+                  scrollDirection: Axis.horizontal,
+                  itemBuilder: (context, index) {
+                    return Container(
+                        width: 200,
                         child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          mainAxisSize: MainAxisSize.max,
                           children: [
-                            SizedBox(
-                              height: 20,
-                            ),
-                            Text(
-                              "Fetty Athiyatul Maula",
-                              overflow: TextOverflow.ellipsis,
-                              maxLines: 1,
-                              style: TextStyle(
-                                fontSize: 18,
-                                fontWeight: FontWeight.bold,
-                              ),
-                            ),
-                            SizedBox(
-                              height: 5,
-                            ),
-                            Text(
-                              "SQA Automation",
-                              overflow: TextOverflow.ellipsis,
-                              maxLines: 1,
-                              style: TextStyle(
-                                fontSize: 15,
-                                color: Colors.grey,
-                                fontWeight: FontWeight.bold,
-                              ),
-                            ),
-                            SizedBox(
-                              height: 5,
-                            ),
-                            Flexible(
+                            Expanded(
+                                flex: 7,
                                 child: Container(
-                              decoration: BoxDecoration(
-                                  color:
-                                      const Color.fromARGB(255, 200, 225, 238),
-                                  borderRadius: BorderRadius.circular(8)),
-                              height: 60,
-                              child: Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceAround,
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  InformationRating(
-                                    subTitle: "Articles",
-                                    value: "100",
+                                    margin: EdgeInsets.all(10),
+                                    width: 230,
+                                    decoration: BoxDecoration(
+                                        borderRadius: BorderRadius.all(20),
+                                        image: DecorationImage(
+                                            fit: BoxFit.cover,
+                                            image: NetworkImage(
+                                                "https://picsum.photos/200/300"))),
+                                    child: Image.network(
+                                      "https://picsum.photos/200/300",
+                                      fit: BoxFit.cover,
+                                    ))),
+                            SizedBox(
+                              height: 10,
+                            ),
+                            Expanded(
+                                flex: 3,
+                                child: Container(
+                                  margin: EdgeInsets.only(right: 10),
+                                  child: Flex(
+                                    direction: Axis.vertical,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      Text(
+                                        "Nature",
+                                        style: TextStyle(
+                                            fontSize: 15,
+                                            fontWeight: FontWeight.w600,
+                                            color: Colors.grey),
+                                      ),
+                                      SizedBox(
+                                        height: 8,
+                                      ),
+                                      Flexible(
+                                          child: Text(
+                                        "Let us plant more trees from this year",
+                                        maxLines: 2,
+                                        overflow: TextOverflow.ellipsis,
+                                        style: TextStyle(
+                                            fontSize: 10,
+                                            fontWeight: FontWeight.bold,
+                                            color: Colors.black),
+                                      ))
+                                    ],
                                   ),
-                                  InformationRating(
-                                    subTitle: "Followers",
-                                    value: "230",
-                                  ),
-                                  InformationRating(
-                                    subTitle: "Rating",
-                                    value: "8.7",
-                                  ),
-                                ],
-                              ),
-                            ))
+                                )),
                           ],
-                        ),
-                      ))
-                    ],
-                  ),
+                        ));
+                  },
                 ),
-                SizedBox(
-                  height: 10,
-                ),
-                Flexible(
-                  child: Container(
-                    child: Row(
-                      crossAxisAlignment: CrossAxisAlignment.stretch,
-                      mainAxisSize: MainAxisSize.max,
-                      children: [
-                        Expanded(
-                            flex: 1,
-                            child: OutlinedButton(
-                                onPressed: () {}, child: Text("Chat"))),
-                        SizedBox(
-                          width: 15,
-                        ),
-                        Expanded(
-                            flex: 1,
-                            child: ElevatedButton(
-                                onPressed: () {},
-                                // style: ElevatedButton.styleFrom(
-                                //   backgroundColor:
-                                //       Colors.lightBlue, // Warna biru
-                                // ),
-                                child: Text("Follow")))
-                      ],
-                    ),
-                  ),
-                )
-              ],
-            ),
+              )
+            ],
           ),
         ),
-      )),
+      ),
     );
   }
 }
 
-class InformationRating extends StatelessWidget {
-  const InformationRating({
+class TitleAndSubtitle extends StatelessWidget {
+  const TitleAndSubtitle({
     super.key,
-    required this.subTitle,
-    required this.value,
   });
-
-  final String subTitle;
-  final String value;
 
   @override
   Widget build(BuildContext context) {
     return Column(
-      mainAxisAlignment: MainAxisAlignment.center,
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
-          subTitle,
-          style: TextStyle(
-              fontWeight: FontWeight.bold, fontSize: 12, color: Colors.black54),
+          "Notable Works",
+          style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+        ),
+        SizedBox(
+          height: 8,
         ),
         Text(
-          value,
+          "Based on the popularity of articles",
           style: TextStyle(
-              fontWeight: FontWeight.bold, fontSize: 20, color: Colors.black),
+              fontSize: 13, fontWeight: FontWeight.bold, color: Colors.green),
         ),
       ],
     );
