@@ -15,9 +15,9 @@ class Headset extends StatelessWidget {
               style: TextStyle(fontSize: 30),
             ),
             Padding(padding: EdgeInsets.all(20)),
-            Icon(
-              Icons.headphones,
-              size: 90,
+            Image.asset(
+              "img/headphones.jpg",
+              width: 200,
             )
           ],
         ),

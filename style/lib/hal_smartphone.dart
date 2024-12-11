@@ -15,9 +15,9 @@ class Smartphone extends StatelessWidget {
               style: TextStyle(fontSize: 30),
             ),
             Padding(padding: EdgeInsets.all(20)),
-            Icon(
-              Icons.smartphone,
-              size: 90,
+            Image.network(
+              "https://m.media-amazon.com/images/I/71nGqrL5K2L.jpg",
+              width: 200,
             )
           ],
         ),
